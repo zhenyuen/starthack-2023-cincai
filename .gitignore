@@ -1,0 +1,9 @@
+.ipynb_checkpoints/
+db/
+src/__pycache__
+accounts.csv
+alliance_ff.csv
+alliance_membership.csv
+chat_messages_1.csv
+chat_messages_2.csv
+
