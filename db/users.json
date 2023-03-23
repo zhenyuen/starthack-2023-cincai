@@ -3,33 +3,18 @@
         "session_id": 0,
         "users": [
             {
-                "username": "user_0",
+                "username": "user0",
                 "user_id": "853b494f0a59f53d7bd85e58a3635bfcc5ea0ff5ab20821216d2ed50990a56d0",
                 "alliance_id": "96f5654de36f29efbc2ee289e5300a30f70b65e56662b86a56311f15444be631"
             },
             {
-                "username": "user_1",
+                "username": "user1",
                 "user_id": "ed224aa24238a592bcb37102db09a4b58b3558587198b178ac4c91e0103096ab",
                 "alliance_id": "96f5654de36f29efbc2ee289e5300a30f70b65e56662b86a56311f15444be631"
             },
             {
-                "username": "user_2",
+                "username": "user2",
                 "user_id": "2d767c85e39d533507e2ab150fc1aacc5597d9c638a9a70eddddee624082fd0f",
-                "alliance_id": "96f5654de36f29efbc2ee289e5300a30f70b65e56662b86a56311f15444be631"
-            },
-            {
-                "username": "user_3",
-                "user_id": "3d3693af2dbeb26114fec4ea3ece6385766ee9f308bdfaf96d7eb7f0bb81e12b",
-                "alliance_id": "96f5654de36f29efbc2ee289e5300a30f70b65e56662b86a56311f15444be631"
-            },
-            {
-                "username": "user_4",
-                "user_id": "9909846ff401f471d3102fcc82ee84bc7f95a87c555e901bada0c1d4f0125e99",
-                "alliance_id": "96f5654de36f29efbc2ee289e5300a30f70b65e56662b86a56311f15444be631"
-            },
-            {
-                "username": "user_5",
-                "user_id": "6cdb5ce77d5d095b47d64de4dc99720d34e51e95be5089f78055e56f215aef05",
                 "alliance_id": "96f5654de36f29efbc2ee289e5300a30f70b65e56662b86a56311f15444be631"
             }
         ]

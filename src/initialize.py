@@ -56,7 +56,7 @@ def read_demo(f) -> list[Chat, list]:
             if user_id in unique_users:
                 username = unique_users[user_id]
             else:
-                username = "user_{}".format(next(cc))
+                username = "user{}".format(next(cc))
                 unique_users[user_id] = username
                 users.append(User(username, user_id, alliance_id))
 

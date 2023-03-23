@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>Chat Moderator Page</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
     <div class="float-container">
@@ -10,9 +11,9 @@
             <div id="chat-log">
                 <h3 class="title">Chat Log</h3>
                 <div class="messages">
-                    <ul class="chat-list">
+                    <ul class="chat-list" id="chat-li">
                         <!-- List items from Javascript: chat records (player name, message, date, time)-->
-                        <li>
+                        <!-- <li>
                             <div class="chat-container">
                                 <div class="text-corrector">
                                 <p class="text">Player 1: Why no dragon</p>
@@ -51,14 +52,14 @@
                                 </div>
                                 <div class="chat-time">Time 00/00/00 00:00:00</div>
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
             <div id="summary">
                 <h3 class="title">Summary</h3>
                 <!-- Summary from ChatGPT API -->
-                <p id="summary-text">Players argue about gameplay, focusing on a dragon and ground troops. Confrontational language dominates, with an attempt to diffuse the tension.</p>
+                <p id="summary-text">Loading...</p>
             </div>
         </div>
         <div class="float-child-right">
@@ -72,7 +73,7 @@
                 <h3 class="title">Players Involved</h3>
                 <ul id="people">
                     <!-- List items from Javascript: players involved (hover: play details)-->
-                    <li>
+                    <!-- <li>
                         <div class="player-container">
                             <span class="player">Player 1</span>
                             <select class="actions">
@@ -104,7 +105,7 @@
                                 <option value="ignore">Ignore</option>
                             </select>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

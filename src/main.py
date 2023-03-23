@@ -25,19 +25,7 @@ def root():
 def moderate():
     # For the sake of example, use static information to inflate the template.
     # This will be replaced with real information in later steps.
-    session_id = request.args.get("session_id")
-    messages = get_messages(session_id)
-    users = get_users(session_id)
-
-    summary = get_summary(messages)
-
-    dummy_times = [
-        datetime.datetime(2018, 1, 1, 10, 0, 0),
-        datetime.datetime(2018, 1, 2, 10, 30, 0),
-        datetime.datetime(2018, 1, 3, 11, 0, 0),
-    ]
-
-    return render_template("index.html", times=dummy_times)
+    return render_template("chat.html")
 
 
 @app.route("/chat", methods=["GET"])  # Front end
