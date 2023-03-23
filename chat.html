@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat Moderator Page</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="float-container">
+        <div class="float-child-left">
+            <div id="chat-log">
+                <h3 class="title">Chat Log</h3>
+                <div class="messages">
+                    <ul class="chat-list">
+                        <!-- List items from Javascript: chat records (player name, message, date, time)-->
+                        <li>
+                            <div class="chat-container">
+                                <div class="text-corrector">
+                                <p class="text">Player 1: Why no dragon</p>
+                                </div>
+                                <div class="chat-time">Time 00/00/00 00:00:00</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="chat-container">
+                                <div class="text-corrector">
+                                <p class="text">Player 2: Screw you I use ground troop</p>
+                                </div>
+                                <div class="chat-time">Time 00/00/00 00:00:00</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="chat-container">
+                                <div class="text-corrector">
+                                <p class="text">Player 3: Relax guys</p>
+                                </div>
+                                <div class="chat-time">Time 00/00/00 00:00:00</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="chat-container">
+                                <div class="text-corrector">
+                                <p class="text">Player 1: Do you even know how to play</p>
+                                </div>
+                                <div class="chat-time">Time 00/00/00 00:00:00</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="chat-container">
+                                <div class="text-corrector">
+                                <p class="text">Player 2: I am better than you</p>
+                                </div>
+                                <div class="chat-time">Time 00/00/00 00:00:00</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="summary">
+                <h3 class="title">Summary</h3>
+                <!-- Summary from ChatGPT API -->
+                <p id="summary-text">Players argue about gameplay, focusing on a dragon and ground troops. Confrontational language dominates, with an attempt to diffuse the tension.</p>
+            </div>
+        </div>
+        <div class="float-child-right">
+            <div id="score">
+                <h3 class="title">AI Evaluated Rating</h3>
+                <!-- Value from ML model -->
+                <p id="score-value">Some value by the AI</p>
+                <p id="comment">Interpretation of the AI generated value</p>
+            </div>
+            <div id="people-list">
+                <h3 class="title">Players Involved</h3>
+                <ul id="people">
+                    <!-- List items from Javascript: players involved (hover: play details)-->
+                    <li>
+                        <div class="player-container">
+                            <span class="player">Player 1</span>
+                            <select class="actions">
+                                <option value="" disabled selected hidden>...</option>
+                                <option value="permanent-ban">Permanent ban</option>
+                                <option value="temporary-ban">Temporary ban</option>
+                                <option value="ignore">Ignore</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="player-container">
+                            <span class="player">Player 2</span>
+                            <select class="actions">
+                                <option value="" disabled selected hidden>...</option>
+                                <option value="permanent-ban">Permanent ban</option>
+                                <option value="temporary-ban">Temporary ban</option>
+                                <option value="ignore">Ignore</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="player-container">
+                            <span class="player">Player 3</span>
+                            <select class="actions">
+                                <option value="" disabled selected hidden>...</option>
+                                <option value="permanent-ban">Permanent ban</option>
+                                <option value="temporary-ban">Temporary ban</option>
+                                <option value="ignore">Ignore</option>
+                            </select>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
