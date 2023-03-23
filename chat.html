@@ -3,6 +3,7 @@
   <head>
     <title>Chat Moderator Page</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
   </head>
   <body>
     <div class="float-container">
@@ -73,7 +74,7 @@
                 <ul id="people">
                     <!-- List items from Javascript: players involved (hover: play details)-->
                     <li>
-                        <div class="player-container">
+                        <div class="player-container tooltip">
                             <span class="player">Player 1</span>
                             <select class="actions">
                                 <option value="" disabled selected hidden>...</option>
@@ -81,10 +82,17 @@
                                 <option value="temporary-ban">Temporary ban</option>
                                 <option value="ignore">Ignore</option>
                             </select>
+                            <div class="tooltiptext">
+                                <!-- Details from Javascript: player details -->
+                                <p>AI suggested score: 6.9</p>
+                                <p>Number of misconducts (1 month): </p>
+                                <p>Alliance: </p>
+                                <p>Last seen: </p>
+                            </div>
                         </div>
                     </li>
                     <li>
-                        <div class="player-container">
+                        <div class="player-container tooltip">
                             <span class="player">Player 2</span>
                             <select class="actions">
                                 <option value="" disabled selected hidden>...</option>
@@ -92,10 +100,16 @@
                                 <option value="temporary-ban">Temporary ban</option>
                                 <option value="ignore">Ignore</option>
                             </select>
+                            <div class="tooltiptext">
+                                <p>AI suggested score: 3.2</p>
+                                <p>Number of misconducts (1 month): </p>
+                                <p>Alliance: </p>
+                                <p>Last seen: </p>
+                            </div>
                         </div>
                     </li>
                     <li>
-                        <div class="player-container">
+                        <div class="player-container tooltip">
                             <span class="player">Player 3</span>
                             <select class="actions">
                                 <option value="" disabled selected hidden>...</option>
@@ -103,6 +117,12 @@
                                 <option value="temporary-ban">Temporary ban</option>
                                 <option value="ignore">Ignore</option>
                             </select>
+                            <div class="tooltiptext">
+                                <p>AI suggested score: 9.9</p>
+                                <p>Number of misconducts (1 month): </p>
+                                <p>Alliance: </p>
+                                <p>Last seen: </p>
+                            </div>
                         </div>
                     </li>
                 </ul>
