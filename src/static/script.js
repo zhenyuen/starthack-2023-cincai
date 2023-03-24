@@ -2,6 +2,20 @@
 
 
 window.addEventListener('load', async function () {
+    const div = document.getElementById("player-1");
+    const tooltip = document.getElementById("tooltip-1");
+
+
+    div.addEventListener("mouseover", function(event) {
+        // Show the tooltip
+        tooltip.style.display = "block";
+    });
+
+    div.addEventListener("mouseout", function() {
+        // Hide the tooltip
+        tooltip.style.display = "none";
+    });
+    
     const session_id = prompt("Please input session id: ")
     const chat = await get_chat(session_id)
     const users = await get_users(session_id)
