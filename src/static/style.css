@@ -84,6 +84,7 @@
   right: 10px;
   top: 10px;
   font-size: 9px;
+  color: #8c321E;
 }
 
 /* Set the height and width of the summary */
@@ -128,6 +129,7 @@
 #people {
   list-style-type: none;
   overflow-y: scroll;
+  height: 300px;
 }
 
 .player-container {
@@ -176,4 +178,23 @@
   width: 90%;
   left: 5%;
   font-size: 13px;
+}
+
+.tooltip .tooltiptext {
+  position: relative;
+  visibility: hidden;
+  width: 300px;
+  background-color: grey;
+  color: black;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  padding: 5px 0;
+  border-radius: 6px;
+  z-index: 10;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
