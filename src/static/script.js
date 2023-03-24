@@ -78,19 +78,17 @@ window.addEventListener('load', async function () {
         c41.setAttribute("type", "selected")
         c41.setAttribute("type", "hidden")
         c41.textContent = "..."
-        const c42 = this.document.createElement("option")
-        c42.value = "permanent-ban"
-        c42.textContent = "Permanent ban"
-        const c43 = this.document.createElement("option")
-        c43.value = "temporary-ban"
-        c43.textContent = "Temporary ban"
-        const c44 = this.document.createElement("option")
-        c44.value = "ignore"
-        c44.textContent = "Ignore"
         c3.appendChild(c41)
-        c3.appendChild(c42)
-        c3.appendChild(c43)
-        c3.appendChild(c44)
+
+        let actions = ["Spamming", "Political", "Unintended", "Aggravation", "Abuse of play", "Harassment", "Hate", "Sexual", "Ignore"]
+        let tags = ["permanent-ban", "temporary-ban", "unintended", "aggravation", "aop", "harassment", "hate", "sexual", "ignore"]
+
+        for (let i = 0; i < actions.length; i++) {
+            const c00 = this.document.createElement("option")
+            c00.value = tags[i]
+            c00.textContent = actions[i]
+            c3.appendChild(c00)
+        }
         c1.appendChild(c2)
         c1.appendChild(c3)
         c1.appendChild(c6)
