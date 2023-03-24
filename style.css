@@ -1,0 +1,200 @@
+@font-face {
+    font-family: "SuperCell";
+    src: url("supercell-magic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: "SuperCell"
+}
+
+.title {
+    position: relative;
+    left: 5%;
+    width: 90%;
+}
+
+.float-child-left {
+    float: left;
+    width: 60%;
+}
+
+.float-child-right {
+    float: right;
+    width: 40%;
+}
+
+#chat-log {
+    position: relative;
+    top: 2%;
+    left: 1%;
+    width: 90%;
+    height: 70%;
+    border-style: solid;
+    border-color: black;
+    border-radius: 25px;
+    margin-bottom: 20px;
+    background-color: #eee;
+    overflow: auto;
+  }
+
+  .messages {
+    position: relative;
+    height: 50%;
+  }
+
+  .chat-list {
+    position: relative;
+    height: 350px;
+    list-style-type: none;
+    overflow-y: scroll;
+  }
+
+  .chat-container {
+    height: 70px;
+    width:95%;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    background-color: #acacac;
+  }
+
+  .text-corrector {
+    position: relative;
+    float: left;
+    width: 60%;
+  }
+
+  .text {
+    position: relative;
+    text-align: left;
+    left: 10px;
+    margin-right: 0px;
+    width: 90%;
+    overflow: auto;
+  }
+  .chat-time {
+    position: relative;
+    text-align: right;
+    float: right;
+    right: 10px;
+    top: 10px;
+    font-size: 9px;
+    color: #8c321E;
+  }
+  
+  /* Set the height and width of the summary */
+  #summary {
+    position: relative;
+    height: 30%;
+    width: 90%;
+    left: 1%;
+    bottom: 2%;
+    border-style: solid;
+    border-color: black;
+    border-radius: 15px;
+    background-color: #eee;
+    overflow: auto;
+  }
+  
+  /* Set the height and width of the score */
+  #score {
+    position: relative;
+    height: 60%;
+    width: 90%;
+    border-style: solid;
+    border-color: black;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    background-color: #eee;
+    overflow: auto;
+  }
+  
+  /* Set the height and width of the people list */
+  #people-list {
+    position: relative;
+    height: 300px;
+    width: 90%;
+    border-style: solid;
+    border-color: black;
+    border-radius: 12px;
+    background-color: #eee;
+    overflow: auto;
+  }
+  
+  #people {
+    list-style-type: none;
+    overflow-y: scroll;
+    height: 300px;
+  }
+
+  .player-container {
+    height: 35px;
+    width:95%;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    background-color: #acacac;
+  }
+
+  .player {
+    position: relative;
+    text-align: left;
+    left: 10px;
+    top: 10px;
+  }
+
+  .actions {
+    position: relative;
+    float: right;
+    right: 10px;
+    top: 10px;
+    width: 35%;
+  }
+
+  #summary-text {
+    position: relative;
+    width: 90%;
+    left: 5%;
+    font-size: 13px;
+  }
+
+  #score-value {
+    position: relative;
+    width: 90%;
+    left: 5%;
+    font-size: 13px;
+  }
+
+  #comment {
+    position: relative;
+    width: 90%;
+    left: 5%;
+    font-size: 13px;
+  }
+
+.tooltip .tooltiptext {
+    position: relative;
+    visibility: hidden;
+    width: 300px;
+    background-color: grey;
+    color: black;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    padding: 5px 0;
+    border-radius: 6px;
+    z-index: 10;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
