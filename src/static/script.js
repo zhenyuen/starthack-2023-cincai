@@ -8,7 +8,7 @@ window.addEventListener('load', async function () {
     const mlfs = await get_mlfs(session_id)
     const mlcluster = await get_mlcluster(mlfs)
     const details = await get_user_metrics(session_id)
-
+    console.log(details)
     const messages = chat.messages
     const risks = chat.risks
     const timestamps = chat.timestamp
@@ -52,30 +52,37 @@ window.addEventListener('load', async function () {
     for (let i = 0; i < details.length; i++) {
         const c6 = this.document.createElement("div")
         c6.classList.add("tooltiptext")
-
-        //const metrics = ["Rating"]
         
-        //for (let i = 0; i < details.length; i++) {
-            //const c11 = this.document.createElement("p")
-            //c11.textContent = metrics[i]
-            //c6.appendChild(c11)
-        //} // Not sure if work
-        const c99 = this.document.createElement("p")
-        c99.classList.add("tt")
-        c99.textContent = "Risk of 5: 0 time(s)"
-        const c98 = this.document.createElement("p")
-        c98.classList.add("tt")
-        c98.textContent = "Risk of 6: 1 time(s)"
-        const c97 = this.document.createElement("p")
-        c97.classList.add("tt")
-        c97.textContent = "Risk of 7: 0 time(s)"
-        const c96 = this.document.createElement("p")
-        c96.classList.add("tt")
-        c96.textContent = "Kicked out: 2 time(s)"
-        c6.appendChild(c99)
-        c6.appendChild(c98)
-        c6.appendChild(c97)
-        c6.appendChild(c96)
+        //const metrics = ["Rating"]
+        for (const [key, value] of Object.entries(details[i])) {
+            if (key === "user_id" || key === "username") continue
+            const c11 = this.document.createElement("p")
+            c11.textContent = key.split("_").join(" ") + " : " + value + " time(s)."
+            c11.textContent[0].toUpperCase()
+            c11.classList.add("tt")
+            c6.appendChild(c11)
+        }
+
+        // for (let i = 0; i < details.length; i++) {
+        //     c6
+        // } // Not sure if work
+
+        // const c99 = this.document.createElement("p")
+        // c99.classList.add("tt")
+        // c99.textContent = "Risk of 5: 0 time(s)"
+        // const c98 = this.document.createElement("p")
+        // c98.classList.add("tt")
+        // c98.textContent = "Risk of 6: 1 time(s)"
+        // const c97 = this.document.createElement("p")
+        // c97.classList.add("tt")
+        // c97.textContent = "Risk of 7: 0 time(s)"
+        // const c96 = this.document.createElement("p")
+        // c96.classList.add("tt")
+        // c96.textContent = "Kicked out: 2 time(s)"
+        // c6.appendChild(c99)
+        // c6.appendChild(c98)
+        // c6.appendChild(c97)
+        // c6.appendChild(c96)
 
         const c0 = document.createElement("li")
         const c1 = document.createElement("div")
