@@ -3,7 +3,6 @@
   <head>
     <title>Chat Moderator Page</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
   </head>
   <body>
     <div class="float-container">
@@ -19,6 +18,7 @@
                                 <p class="text">Player 1: Why no dragon</p>
                                 </div>
                                 <div class="chat-time">Time 00/00/00 00:00:00</div>
+                                <span style="visibility: hidden">5</span>
                             </div>
                         </li>
                         <li>
@@ -27,6 +27,7 @@
                                 <p class="text">Player 2: Screw you I use ground troop</p>
                                 </div>
                                 <div class="chat-time">Time 00/00/00 00:00:00</div>
+                                <span style="visibility: hidden">0</span>
                             </div>
                         </li>
                         <li>
@@ -35,6 +36,7 @@
                                 <p class="text">Player 3: Relax guys</p>
                                 </div>
                                 <div class="chat-time">Time 00/00/00 00:00:00</div>
+                                <span style="visibility: hidden">7</span>
                             </div>
                         </li>
                         <li>
@@ -43,6 +45,7 @@
                                 <p class="text">Player 1: Do you even know how to play</p>
                                 </div>
                                 <div class="chat-time">Time 00/00/00 00:00:00</div>
+                                <span style="visibility: hidden">2</span>
                             </div>
                         </li>
                         <li>
@@ -51,6 +54,7 @@
                                 <p class="text">Player 2: I am better than you</p>
                                 </div>
                                 <div class="chat-time">Time 00/00/00 00:00:00</div>
+                                <span style="visibility: hidden">1</span>
                             </div>
                         </li>
                     </ul>
@@ -78,8 +82,14 @@
                             <span class="player">Player 1</span>
                             <select class="actions">
                                 <option value="" disabled selected hidden>...</option>
-                                <option value="permanent-ban">Permanent ban</option>
-                                <option value="temporary-ban">Temporary ban</option>
+                                <option value="permanent-ban">Spamming</option>
+                                <option value="temporary-ban">Political</option>
+                                <option value="unintended">Unintended</option>
+                                <option value="aggravation">Aggravation</option>
+                                <option value="aop">Abuse of play</option>
+                                <option value="harassment">Harassment</option>
+                                <option value="hate">Hate</option>
+                                <option value="sexual">Sexual</option>
                                 <option value="ignore">Ignore</option>
                             </select>
                             <div class="tooltiptext">
@@ -96,8 +106,14 @@
                             <span class="player">Player 2</span>
                             <select class="actions">
                                 <option value="" disabled selected hidden>...</option>
-                                <option value="permanent-ban">Permanent ban</option>
-                                <option value="temporary-ban">Temporary ban</option>
+                                <option value="permanent-ban">Spamming</option>
+                                <option value="temporary-ban">Political</option>
+                                <option value="unintended">Unintended</option>
+                                <option value="aggravation">Aggravation</option>
+                                <option value="aop">Abuse of play</option>
+                                <option value="harassment">Harassment</option>
+                                <option value="hate">Hate</option>
+                                <option value="sexual">Sexual</option>
                                 <option value="ignore">Ignore</option>
                             </select>
                             <div class="tooltiptext">
@@ -113,8 +129,14 @@
                             <span class="player">Player 3</span>
                             <select class="actions">
                                 <option value="" disabled selected hidden>...</option>
-                                <option value="permanent-ban">Permanent ban</option>
-                                <option value="temporary-ban">Temporary ban</option>
+                                <option value="permanent-ban">Spamming</option>
+                                <option value="temporary-ban">Political</option>
+                                <option value="unintended">Unintended</option>
+                                <option value="aggravation">Aggravation</option>
+                                <option value="aop">Abuse of play</option>
+                                <option value="harassment">Harassment</option>
+                                <option value="hate">Hate</option>
+                                <option value="sexual">Sexual</option>
                                 <option value="ignore">Ignore</option>
                             </select>
                             <div class="tooltiptext">
@@ -129,5 +151,6 @@
             </div>
         </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
