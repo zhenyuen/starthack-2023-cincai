@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Chat Moderator Page</title>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
@@ -73,42 +72,11 @@
                 <h3 class="title">Players Involved</h3>
                 <ul id="people">
                     <!-- List items from Javascript: players involved (hover: play details)-->
-                    <!-- <li>
-                        <div class="player-container">
-                            <span class="player">Player 1</span>
-                            <select class="actions">
-                                <option value="" disabled selected hidden>...</option>
-                                <option value="permanent-ban">Permanent ban</option>
-                                <option value="temporary-ban">Temporary ban</option>
-                                <option value="ignore">Ignore</option>
-                            </select>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="player-container">
-                            <span class="player">Player 2</span>
-                            <select class="actions">
-                                <option value="" disabled selected hidden>...</option>
-                                <option value="permanent-ban">Permanent ban</option>
-                                <option value="temporary-ban">Temporary ban</option>
-                                <option value="ignore">Ignore</option>
-                            </select>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="player-container">
-                            <span class="player">Player 3</span>
-                            <select class="actions">
-                                <option value="" disabled selected hidden>...</option>
-                                <option value="permanent-ban">Permanent ban</option>
-                                <option value="temporary-ban">Temporary ban</option>
-                                <option value="ignore">Ignore</option>
-                            </select>
-                        </div>
-                    </li> -->
+
                 </ul>
             </div>
         </div>
     </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>
