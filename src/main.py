@@ -1,5 +1,5 @@
 import datetime
-from classes import User, Conversation, Summary
+from classes import User, Conversation, Summary, UserMetrics
 from flask import Flask, render_template, request, jsonify
 from chatgpt import query
 import json
@@ -73,10 +73,12 @@ def get_mlcluster() -> list[User]:
 
 
 @app.route("/user_metrics", methods=["GET"])  # Front end
-def get_user_metrics() -> Summary:
+def get_user_metrics() -> list[UserMetrics]:
     session_id: int = request.args.get("session_id")
-    user_id: int = request.args.get("session_id")
-    ...
+    
+    with open("../db/details.json", "r") as f:
+        user_detail = json.load(f)
+    return user_detail[session_id]["details"]
 
 
 if __name__ == "__main__":

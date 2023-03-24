@@ -1,5 +1,5 @@
 import json
-from classes import User, Chat, MLFeatures
+from classes import User, Chat, MLFeatures, UserMetrics
 from itertools import count
 import csv
 import os
@@ -11,7 +11,7 @@ load_dotenv()
 c = count()
 
 
-def create_session(chat: Chat, users: list[User], mlfeats: list[MLFeatures]):
+def create_session(chat: Chat, users: list[User], mlfeats: list[MLFeatures], details: list[UserMetrics]):
     session_id = next(c)
     try:
         with open("../db/chats.json", "r") as f:
@@ -31,6 +31,12 @@ def create_session(chat: Chat, users: list[User], mlfeats: list[MLFeatures]):
     except:
         mlfeats_data = dict()
 
+    try:
+        with open("../db/details.json", "r") as f:
+            details_data = json.load(f)
+    except:
+        details_data = dict()
+
     chats_data[session_id] = {"session_id": session_id, "chat": chat}
 
     users_data[session_id] = {
@@ -43,6 +49,11 @@ def create_session(chat: Chat, users: list[User], mlfeats: list[MLFeatures]):
         "mlfs": [mlf.__dict__ for mlf in mlfeats],
     }
 
+    details_data[session_id] = {
+        "session_id": session_id,
+        "details": [det.__dict__ for det in details],
+    }
+
     with open("../db/chats.json", "w") as f:
         json.dump(chats_data, f, indent=4)
 
@@ -51,6 +62,9 @@ def create_session(chat: Chat, users: list[User], mlfeats: list[MLFeatures]):
 
     with open("../db/mlfeats.json", "w") as f:
         json.dump(mlfeats_data, f, indent=4)
+
+    with open("../db/details.json", "w") as f:
+        json.dump(details_data, f, indent=4)
 
 
 def read_demo(f) -> list[Chat, list[User]]:
@@ -100,6 +114,27 @@ def read_mlfeats(f) -> list[MLFeatures]:
     
     return mlf
 
+def read_details(f) -> list[UserMetrics]:
+    unique_users = dict()
+    users = []
+    lines = 0
+    cc = count()
+    with open(f, "r") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            lines += 1
+            risk_5 = row['past_risk_5']
+            risk_6 = row['past_risk_6']
+            risk_7 = row['past_risk_7']
+            kick_out = row['past_kicked_out']
+            user_id = row['account_id']
+            if user_id not in unique_users:
+                username = "user{}".format(next(cc))
+                unique_users[user_id] = username
+                users.append(UserMetrics(username, user_id, risk_5, risk_6, risk_7, kick_out))
+    return users
+
+
 
 
 if __name__ == "__main__":
@@ -120,14 +155,24 @@ if __name__ == "__main__":
     with open("../db/users.json", "w") as f:
             json.dump({}, f, indent=4)
 
+    with open("../db/details.json", "w") as f:
+            json.dump({}, f, indent=4)
+
     # chat, users = read_demo('../db/demo1.csv')
     # create_session(chat, users)
 
     # chat, users = read_demo('../db/toxic2.csv')
     # create_session(chat, users)
 
+    """
     chat, users = read_demo('../db/incident1_chathistory.csv')
     mlfeats = read_mlfeats('../db/incident1_accounts.csv')
     create_session(chat, users, mlfeats)
+    """
+
+    chat, users = read_demo('../db/incident2_chathistory.csv')
+    mlfeats = read_mlfeats('../db/incident2_accounts.csv')
+    details = read_details('../db/incident2_profile.csv')
+    create_session(chat, users, mlfeats, details)
 
     

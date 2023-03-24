@@ -7,6 +7,7 @@ window.addEventListener('load', async function () {
     const users = await get_users(session_id)
     const mlfs = await get_mlfs(session_id)
     const mlcluster = await get_mlcluster(mlfs)
+    const details = await get_user_metrics(session_id)
 
     const messages = chat.messages
     const risks = chat.risks
@@ -48,17 +49,33 @@ window.addEventListener('load', async function () {
 
     const node2 = document.getElementById("people");
 
-    for (let i = 0; i < users.length; i++) {
+    for (let i = 0; i < details.length; i++) {
         const c6 = this.document.createElement("div")
         c6.classList.add("tooltiptext")
 
-        const metrics = ["Rating"]
-
-        for (let i = 0; i < metrics.length; i++) {
-            const c11 = this.document.createElement("p")
-            c11.textContent = metrics[i]
-            c6.appendChild(c11)
-        } // Not sure if work
+        //const metrics = ["Rating"]
+        
+        //for (let i = 0; i < details.length; i++) {
+            //const c11 = this.document.createElement("p")
+            //c11.textContent = metrics[i]
+            //c6.appendChild(c11)
+        //} // Not sure if work
+        const c99 = this.document.createElement("p")
+        c99.classList.add("tt")
+        c99.textContent = "Risk of 5: 0 time(s)"
+        const c98 = this.document.createElement("p")
+        c98.classList.add("tt")
+        c98.textContent = "Risk of 6: 1 time(s)"
+        const c97 = this.document.createElement("p")
+        c97.classList.add("tt")
+        c97.textContent = "Risk of 7: 0 time(s)"
+        const c96 = this.document.createElement("p")
+        c96.classList.add("tt")
+        c96.textContent = "Kicked out: 2 time(s)"
+        c6.appendChild(c99)
+        c6.appendChild(c98)
+        c6.appendChild(c97)
+        c6.appendChild(c96)
 
         const c0 = document.createElement("li")
         const c1 = document.createElement("div")
@@ -67,7 +84,7 @@ window.addEventListener('load', async function () {
 
         const c2 = document.createElement("span")
         c2.className = "player"
-        c2.textContent = users[i].username
+        c2.textContent = details[i].username
         const c3 = this.document.createElement("select")
         c3.className = "actions"
         const c41 = this.document.createElement("option")
@@ -79,7 +96,7 @@ window.addEventListener('load', async function () {
         c3.appendChild(c41)
 
         let actions = ["Spamming", "Political", "Unintended", "Aggravation", "Abuse of play", "Harassment", "Hate", "Sexual", "Ignore"]
-        let tags = ["permanent-ban", "temporary-ban", "unintended", "aggravation", "aop", "harassment", "hate", "sexual", "ignore"]
+        let tags = ["spamming", "political", "unintended", "aggravation", "aop", "harassment", "hate", "sexual", "ignore"]
 
         for (let i = 0; i < actions.length; i++) {
             const c00 = this.document.createElement("option")
@@ -199,5 +216,14 @@ async function get_summary(messages, users) {
     })
 }
 
+async function get_user_metrics(session_id) {
+    return await fetch(`http://127.0.0.1:8080/user_metrics?session_id=${session_id}`)
+    .then((res) => {
+        return res.json()
+    })
+    .then((obj) => {
+        return obj
+    })
+}
 
 

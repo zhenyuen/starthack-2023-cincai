@@ -18,7 +18,12 @@ class User:
 
 @dataclass
 class UserMetrics:
-    ...
+    username: str
+    user_id: str
+    risk_5: int
+    risk_6: int
+    risk_7: int
+    kick_out: int
 
 
 @dataclass
