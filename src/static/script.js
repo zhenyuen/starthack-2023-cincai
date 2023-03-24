@@ -7,6 +7,7 @@ window.addEventListener('load', async function () {
     const users = await get_users(session_id)
     const mlfs = await get_mlfs(session_id)
     const mlcluster = await get_mlcluster(mlfs)
+
     const messages = chat.messages
     const risks = chat.risks
     const timestamps = chat.timestamp
@@ -51,7 +52,7 @@ window.addEventListener('load', async function () {
         const c6 = this.document.createElement("div")
         c6.classList.add("tooltiptext")
 
-        const metrics = []
+        const metrics = ["Rating"]
 
         for (let i = 0; i < metrics.length; i++) {
             const c11 = this.document.createElement("p")
@@ -115,9 +116,14 @@ window.addEventListener('load', async function () {
         var r = (value - 1) * 25.5; // increase green value as value increases
         var b = 0; // set blue value to 0
         current.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
-        console.log(current)
-}
+    }
 
+
+    const score_e = document.getElementById("score-value")
+    score_e.textContent = `${mlcluster.cluster.slice(2,5)} out of 1.0`
+
+    const descrip_e = document.getElementById("comment")
+    descrip_e.textContent = `confidence score in chat containing inappropriate behaviour.`
 
 });
 
@@ -138,7 +144,6 @@ async function get_mlfs(session_id) {
         return res.json()
     })
     .then((obj) => {
-        console.log(obj)
         return obj
     })
 }
@@ -155,9 +160,8 @@ async function get_mlcluster(mlfs) {
             mlfs: mlfs
         })
     })
-    .then((obj) => {
-        console.log(obj)
-        return obj
+    .then((res) => {
+        return res.json()
     })
 }
 
@@ -188,9 +192,6 @@ async function get_summary(messages, users) {
         return res.json()
     })
     .then((obj) => {
-        
-        console.log(obj)
-        console.log(obj.choices[0].text)
         return obj.choices[0].text
     }).catch(e => {
         console.log(e)

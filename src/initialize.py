@@ -93,7 +93,10 @@ def read_mlfeats(f) -> list[MLFeatures]:
         reader = csv.DictReader(f)
         for row in reader:
             del row['']
-            mlf.append(MLFeatures(**row))
+            del row['chat_id']
+
+            temp = MLFeatures(**row)
+            mlf.append(temp)
     
     return mlf
 

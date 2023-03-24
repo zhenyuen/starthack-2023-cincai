@@ -43,7 +43,6 @@ class MLFeatures:
     SUBVERSIVE: float
     SENTIMENT: float
     POLITICS: float
-    chat_id: int
     session_count: int
     session_duration: int
     transaction_count: int

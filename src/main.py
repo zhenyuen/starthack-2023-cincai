@@ -68,8 +68,8 @@ def get_mlfeats() -> list[User]:
 @app.route("/mlcluster", methods=["POST"])  # Front end
 def get_mlcluster() -> list[User]:
     mlfs = request.get_json()["mlfs"]
-    compute_cluster(mlfs)
-    return compute_cluster(mlfs)
+    res = compute_cluster(mlfs)
+    return {'cluster': res }
 
 
 @app.route("/user_metrics", methods=["GET"])  # Front end
