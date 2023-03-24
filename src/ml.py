@@ -2,7 +2,7 @@ import pickle
 import numpy as np
 
 
-def get_cluster(features):
+def compute_cluster(features):
     with open("gmm", "rb") as f:
         gmm = pickle.load(f)
     
