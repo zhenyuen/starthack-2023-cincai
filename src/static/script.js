@@ -6,6 +6,7 @@ window.addEventListener('load', async function () {
     const chat = await get_chat(session_id)
     const users = await get_users(session_id)
     const messages = chat.messages
+    const risks = chat.risks
     const timestamps = chat.timestamp
     const formatted = messages.map(function(e) { 
         return `${e.username}: ${e.message}`;
@@ -32,7 +33,7 @@ window.addEventListener('load', async function () {
         c4.className = "chat-time"
         const c5 = this.document.createElement("span")
         c5.setAttribute("style", "visibility: hidden")
-        c5.textContent = 5
+        c5.textContent = risks[i]
         c4.textContent = t
         c2.appendChild(c3)
         c1.appendChild(c2)
@@ -48,19 +49,13 @@ window.addEventListener('load', async function () {
         const c6 = this.document.createElement("div")
         c6.classList.add("tooltiptext")
 
-        const c7 = this.document.createElement("p")
-        c7.textContent = "AI suggested score: 6.9"
+        metrics = []
 
-        const c8 = this.document.createElement("p")
-        c8.textContent = "AI suggested score: 6.9"
-        const c9 = this.document.createElement("p")
-        c9.textContent = "AI suggested score: 6.9"
-        const c10 = this.document.createElement("p")
-        c10.textContent = "AI suggested score: 6.9"
-        c6.appendChild(c7)
-        c6.appendChild(c8)
-        c6.appendChild(c9)
-        c6.appendChild(c10)
+        for (let i = 0; i < metrics.length; i++) {
+            const c11 = this.document.createElement("p")
+            c11.textContent = metrics[i]
+            c6.appendChild(c11)
+        } // Not sure if work
 
         const c0 = document.createElement("li")
         const c1 = document.createElement("div")

@@ -19,6 +19,7 @@ class User:
 class UserMetrics:
     user_id: str
     dummy: str  # For testing
+    age: str
 
 
 @dataclass
@@ -51,4 +52,5 @@ class Prompt:
 class Chat:
     messages: list[str]
     timestamp: list[str]
+    risks: list[float]
 

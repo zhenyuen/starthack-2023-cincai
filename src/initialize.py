@@ -39,18 +39,20 @@ def create_session(chat: Chat, users: list[User]):
         json.dump(users_data, f, indent=4)
 
 
-def read_demo(f) -> list[Chat, list]:
+def read_demo(f) -> list[Chat, list[User]]:
     max_sentences = int(os.getenv("MAX_SENTENCES"))
     unique_users = dict()
     messages = []
     users = []
     timestamps = []
+    risks = []
     cc = count()
     lines = 0
     with open(f, "r") as f:
         reader = csv.DictReader(f)
         for row in reader:
             lines += 1
+            risk = row['risk']
             user_id = row["account_id"]
             alliance_id = row["alliance_id"]
             if user_id in unique_users:
@@ -64,8 +66,9 @@ def read_demo(f) -> list[Chat, list]:
             message = {"username": username, "message": row["raw_message"]}
             messages.append(message)
             timestamps.append(timestamp)
+            risks.append(risk)
             if lines == max_sentences: break
-    chat = Chat(messages, timestamps).__dict__
+    chat = Chat(messages, timestamps, risks).__dict__
     
     return chat, users
 
@@ -90,8 +93,13 @@ if __name__ == "__main__":
     with open("../db/users.json", "w") as f:
             json.dump({}, f, indent=4)
 
-    chat, users = read_demo('../db/demo1.csv')
+    # chat, users = read_demo('../db/demo1.csv')
+    # create_session(chat, users)
+
+    chat, users = read_demo('../db/toxic2.csv')
     create_session(chat, users)
 
+    # chat, users = read_demo('../db/toxic3.csv')
+    # create_session(chat, users)
 
     
