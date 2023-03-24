@@ -5,6 +5,8 @@ window.addEventListener('load', async function () {
     const session_id = prompt("Please input session id: ")
     const chat = await get_chat(session_id)
     const users = await get_users(session_id)
+    const mlfs = await get_mlfs(session_id)
+    const mlcluster = await get_mlcluster(mlfs)
     const messages = chat.messages
     const risks = chat.risks
     const timestamps = chat.timestamp
@@ -49,7 +51,7 @@ window.addEventListener('load', async function () {
         const c6 = this.document.createElement("div")
         c6.classList.add("tooltiptext")
 
-        metrics = []
+        const metrics = []
 
         for (let i = 0; i < metrics.length; i++) {
             const c11 = this.document.createElement("p")
@@ -125,21 +127,39 @@ async function get_chat(session_id) {
         return res.json()
     })
     .then((obj) => {
-        // const messages_e = document.getElementById("messages");
-        // const node = document.createElement("li");
-        
-        // obj.forEach(e => {
-        //     const textnode = document.createTextNode(e);
-        //     node.appendChild(textnode);
-        //     const lb = document.createElement("br")
-        //     node.appendChild(lb);
-        // });
-
-        // messages_e.appendChild(node)
         return obj
     })
 }
 
+
+async function get_mlfs(session_id) {
+    return await fetch(`http://127.0.0.1:8080/mlfeats?session_id=${session_id}`)
+    .then((res) => {
+        return res.json()
+    })
+    .then((obj) => {
+        console.log(obj)
+        return obj
+    })
+}
+
+
+async function get_mlcluster(mlfs) {
+    return await fetch(`http://127.0.0.1:8080/mlcluster`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify({
+            mlfs: mlfs
+        })
+    })
+    .then((obj) => {
+        console.log(obj)
+        return obj
+    })
+}
 
 async function get_users(session_id) {
     return await fetch(`http://127.0.0.1:8080/users?session_id=${session_id}`)

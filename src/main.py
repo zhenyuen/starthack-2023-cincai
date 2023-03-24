@@ -3,6 +3,7 @@ from classes import User, Conversation, Summary
 from flask import Flask, render_template, request, jsonify
 from chatgpt import query
 import json
+from ml import compute_cluster
 
 
 app = Flask(__name__)
@@ -53,6 +54,22 @@ def get_summary() -> Summary:
     users: list[str] = data["users"]
     req = query(messages, [User(**u) for u in users])
     return req.json()
+
+
+@app.route("/mlfeats", methods=["GET"])  # Front end
+def get_mlfeats() -> list[User]:
+    session_id = request.args.get("session_id")
+
+    with open("../db/mlfeats.json", "r") as f:
+        mlfs_data = json.load(f)
+    return mlfs_data[session_id]['mlfs']
+
+
+@app.route("/mlcluster", methods=["POST"])  # Front end
+def get_mlcluster() -> list[User]:
+    mlfs = request.get_json()["mlfs"]
+    compute_cluster(mlfs)
+    return compute_cluster(mlfs)
 
 
 @app.route("/user_metrics", methods=["GET"])  # Front end

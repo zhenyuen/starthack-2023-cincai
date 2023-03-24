@@ -1,5 +1,5 @@
 import json
-from classes import User, Chat
+from classes import User, Chat, MLFeatures
 from itertools import count
 import csv
 import os
@@ -11,7 +11,7 @@ load_dotenv()
 c = count()
 
 
-def create_session(chat: Chat, users: list[User]):
+def create_session(chat: Chat, users: list[User], mlfeats: list[MLFeatures]):
     session_id = next(c)
     try:
         with open("../db/chats.json", "r") as f:
@@ -25,6 +25,12 @@ def create_session(chat: Chat, users: list[User]):
     except:
         users_data = dict()
 
+    try:
+        with open("../db/mlfeats.json", "r") as f:
+            mlfeats_data = json.load(f)
+    except:
+        mlfeats_data = dict()
+
     chats_data[session_id] = {"session_id": session_id, "chat": chat}
 
     users_data[session_id] = {
@@ -32,11 +38,19 @@ def create_session(chat: Chat, users: list[User]):
         "users": [u.__dict__ for u in users],
     }
 
+    mlfeats_data[session_id] = {
+        "session_id": session_id,
+        "mlfs": [mlf.__dict__ for mlf in mlfeats],
+    }
+
     with open("../db/chats.json", "w") as f:
         json.dump(chats_data, f, indent=4)
 
     with open("../db/users.json", "w") as f:
         json.dump(users_data, f, indent=4)
+
+    with open("../db/mlfeats.json", "w") as f:
+        json.dump(mlfeats_data, f, indent=4)
 
 
 def read_demo(f) -> list[Chat, list[User]]:
@@ -73,6 +87,16 @@ def read_demo(f) -> list[Chat, list[User]]:
     return chat, users
 
 
+def read_mlfeats(f) -> list[MLFeatures]:
+    mlf = []
+    with open(f, "r") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            del row['']
+            mlf.append(MLFeatures(**row))
+    
+    return mlf
+
 
 
 if __name__ == "__main__":
@@ -96,10 +120,11 @@ if __name__ == "__main__":
     # chat, users = read_demo('../db/demo1.csv')
     # create_session(chat, users)
 
-    chat, users = read_demo('../db/toxic2.csv')
-    create_session(chat, users)
-
-    # chat, users = read_demo('../db/toxic3.csv')
+    # chat, users = read_demo('../db/toxic2.csv')
     # create_session(chat, users)
+
+    chat, users = read_demo('../db/incident1_chathistory.csv')
+    mlfeats = read_mlfeats('../db/incident1_accounts.csv')
+    create_session(chat, users, mlfeats)
 
     
